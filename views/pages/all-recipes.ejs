@@ -1,0 +1,50 @@
+<%-include ('../partials/header'); %>
+ 
+<main class="main main-recipes container">
+    <section class="section section-recipe row">
+        <p class="text form-text">
+            Enter max calories:   Enter max time in minutes
+        </p>
+        <div class="d-flex">
+            <form action="#">
+                <input type="number" name="calories" value="maxCalories">
+                <!-- <label for="maxCalories">Enter maximum calories</label> -->
+                <input type="number" name="time" value="maxTime">
+                <!-- <label for="maxTime">Enter maximum time in minutes</label> -->
+                <input type="submit">
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+        <h2 class="main-h2 col-md-8 text-center"><%= name %></h2>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <div class="row">
+                <!-- title, photoUrl, cuisine, course, total time -->
+                    <% data.forEach(item => { %>
+                        <div class="col-md-4">
+                            <figure class="figure recipe-figure">
+                                <a href="/recipes/<%= item.id %>">
+                                    <img src="<%= item.photoUrl %>" alt="<%= item.title %>" class="img-fluid box-image">
+                                    <figcaption class="figcaption figcap-recipe"><%= item.title %></figcaption>
+                                </a>
+                                <!-- <figcaption class="figcaption figcap-home">
+                                    Cuisine:  <%= item.cuisine %>
+                                </figcaption>
+                                    <figcaption class="figcaption figcap-home">    
+                                    Course: <%= item.course %>
+                                </figcaption> -->
+                                <figcaption class="figcaption figcap-home">    
+                                    Total time:  <%= item.totalTime %> minutes
+                                    <!-- <a href="#"><%= item.cuisine %></a> -->
+                                </figcaption>
+                            </figure>                 
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+ 
+<%-include ('../partials/footer'); %>

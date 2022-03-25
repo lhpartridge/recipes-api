@@ -1,0 +1,36 @@
+<%- include('../partials/header'); %>
+   
+<main class="main main-home container">
+
+    <!-- change image source to match current api -->
+    
+    <section class="section section-recipe">
+        <div class="row justify-content-end">
+            <div class="col-md-4"></div>
+            <h1 class="home-header col-md-8 justify-content-center">Try this featured recipe!</h2>
+                    <!-- title, photoUrl, cuisine, course, total time -->
+
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <h2 class="title-header text-center"><%= singleItem.title %></h2>
+                <div class="row">
+                    
+                    <img src="<%= singleItem.photoUrl %>"  alt="home image" class="img-fluid home-image col-md-8">
+                    
+                    <% if(singleItem.calories || singleItem.fat || singleItem.cholesterol || singleItem.sodium || singleItem.sugar || singleItem.carbohydrate || singleItem.fiber || singleItem.protein) { %>
+                        <aside class="aside col-md-4"> 
+                            <h3 class="single-h3 list-group-item">Nutrition: </h3>
+                            <ul class="single-ul list-group">
+                                <% for(let [key, value] of Object.entries(nutrition)) { %>
+                                    <li class="single-li list-group-item nutrition-item"><%= key[0].toUpperCase() + key.replace(key[0], '') %>:  <%= value %></li>
+                                <% } %>
+                            </ul>
+                        </aside>
+                    <% } %>                
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer'); %>

@@ -1,0 +1,79 @@
+<%- include('../partials/header'); %>
+ 
+<main class="main main-single container">
+    <h2 class="main-h2 text-center"><%= name %></h2>
+    <section class="section section-single d-flex row justify-content-between">
+ 
+    <!-- previous and next -->
+        <div class="col-md-3"></div>
+        <div class="prev-and-next d-flex justify-content-around col-md-9">
+            <p class="prev">
+                <% if(data.id > 1) { %>
+                    <a href="/recipes/<%= data.id - 1 %> ">Previous recipe</a>
+            <% } %>
+            </p>
+
+            <p class="next">
+                <a href="/recipes/<%= data.id + 1 %> ">Next recipe</a>
+                <!-- <% if(data.id +1 < count) { %> -->
+            <!-- <% } %> -->
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+    
+
+            <figure class="figure figure-single col-md-6">
+                <img src="<%= data.photoUrl %>" alt="<%= title %>" class="img-fluid single-image">
+                <figcaption class="figcaption figcap-single">Cuisine:  <%= data.cuisine %></figcaption>
+                <figcaption class="figcaption figcap-single">Course: <%= data.course %></figcaption>
+                <figcaption class="figcaption figcap-single">Total time:  <%= data.totalTime %> minutes</figcaption>
+                <a href="<%= data.source %>" target="_blank">
+                    <h3 class="single-h3 list-group-item">Source:  <%= data.title %></h3>
+                </a>
+            </figure>
+            <% if(data.calories || data.fat || data.cholesterol || data.sodium || data.sugar || data.carbohydrate || data.fiber || data.protein) { %>
+            <aside class="aside col-md-2"> 
+                <h3 class="single-h3 list-group-item">Nutrition: </h3>
+                <ul class="single-ul list-group">
+                    <% for(let [key, value] of Object.entries(nutrition)) {%>
+                    <li class="single-li list-group-item nutrition-item"><%= key[0].toUpperCase() + key.replace(key[0], '') %>:  <%= value %></li>
+                    <% } %>
+                </ul>
+            </aside>
+            <% } %>
+        </div>
+        
+    </section>
+    <section class="section preparation-section row">
+        <!-- directions with ingredients -->
+        <div class="col-md-4"></div>
+        <div class="preparation col-md-7">
+            <h3 class="preparation">to prepare:  </h3>
+            <div class="row">
+                <div class="ingredients col-md-6">
+                    <h4 class="ingredients">ingredients</h4>
+                    <% data.ingredients = data.ingredients.split('\n') %>
+                    <ul>
+                        <% data.ingredients.forEach(item => { %>
+                            <li class="ingredient-item"><%= item %> </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <div class="directions-div col-md-6">
+                    <h4 class="directions">directions</h4>
+                    <% data.directions = data.directions.split('\n') %> 
+                    <ol>
+                        <% data.directions.forEach(item => { %>
+                            <li class="direction-item"><%= item %></li>    
+                        <% }) %>    
+
+                    </ol>
+                </div>
+            </div>
+        </div>       
+    </section>
+
+    </section>
+</main>
+ 
+<%- include('../partials/footer'); %>

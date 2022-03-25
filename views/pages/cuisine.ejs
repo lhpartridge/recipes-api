@@ -1,0 +1,49 @@
+<%- include('../partials/header'); %>
+
+<main class="main main-cuisine container">
+    <h1>All cuisines</h1>
+<h2 class="main-h2 text-center"><%= name %> </h2>
+<!-- <section class="section section-cuisine d-flex row justify-content-between">
+        <ul>
+            <% for(let i in recipe) { %>
+                <li><a href="<%= recipe[i] %>"><%= i %></a></li>
+            <% } %>    
+        </ul>
+</section> -->
+<section class="section section-recipe row">
+
+    <!-- title, photoUrl, cuisine, course, total time -->
+    <!-- <div class="col-md-4"></div>
+    <h2 class="main-h2 col-md-8 text-center"><%= name %></h2>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <% data.forEach(item => { %>
+                    <div class="col-md-4">
+                        <figure class="figure recipe-figure">
+                            <a href="/recipes/<%= item.id %>">
+                                <img src="<%= item.photoUrl %>" alt="<%= item.title %>" class="img-fluid box-image">
+                                <figcaption class="figcaption figcap-recipe"><%= item.title %></figcaption>
+                            </a>
+                            <figcaption class="figcaption figcap-home">
+                                Cuisine:  <%= item.cuisine %>
+                            </figcaption>
+                                <figcaption class="figcaption figcap-home">    
+                                Course: <%= item.course %>
+                            </figcaption>
+                            <figcaption class="figcaption figcap-home">    
+                                Total time:  <%= item.totalTime %> minutes
+                                <a href="#"><%= item.cuisine %></a>
+                            </figcaption>
+                        </figure>                 
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+</main>
+
+<%- include('../partials/footer'); %>
