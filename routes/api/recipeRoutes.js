@@ -22,10 +22,10 @@ router.get('/', (req, res) => {
             res.render('pages/recipes', {
                 title: 'All Recipes',
                 name: 'Recipe Box',
-        //         // data, 
-        //         count
-        //     })
-        // })
+                data, 
+                count
+            })
+        })
 
     //Ethan's code for the recipe box page
     // fetch(URL)
@@ -34,19 +34,20 @@ router.get('/', (req, res) => {
     //     res.render('pages/recipes', {
     //         title: 'Recipes',
     //         name: 'Recipes',
-            recipe: {
-                Asian: '/recipes/cuisine/Asian',
-                American: '/recipes/cuisine/American',
-                Italian: '/recipes/cuisine/Italian',
-                Mexican: '/recipes/cuisine/Mexican'
-            }
-        })
-    })
+    //         data,
+    //         recipe: {
+    //             Asian: '/recipes/cuisine/Asian',
+    //             American: '/recipes/cuisine/American',
+    //             Italian: '/recipes/cuisine/Italian',
+    //             Mexican: '/recipes/cuisine/Mexican'
+    //         }
+    //     })
+    // })
 
     // fetch(URL)
     //     .then(res => res.json())
     //     .then(data => {
-    //         res.render('pages/all-recipes', {
+    //         res.render('pages/recipes', {
     //             title: 'Recipes',
     //             name: 'Recipes',
     //             data,
@@ -78,7 +79,7 @@ router.get('/cuisine', (req, res) => {
         .then(data => {
             res.render('pages/cuisine', {
                 title: 'Recipes',
-                name: 'Recipes',
+                name: 'Recipes by Cuisine',
                 data,
                 recipe: {
                     Asian: '/recipes/cuisine/Asian',
@@ -104,43 +105,43 @@ router.get('/cuisine', (req, res) => {
     //     })
     //     return cuisineArr
     // })
-    .then(cuisineArr => {
-        res.render('pages/recipes', {
-            title: cuisine,
-            name: `${cuisine} recipes`,
-            data: cuisineArr
-        })
-    })
+//     .then(cuisineArr => {
+//         res.render('pages/recipes', {
+//             title: cuisine,
+//             name: `${cuisine} recipes`,
+//             data: cuisineArr
+//         })
+//     })
 })
 //=======================================
 
 
 // localhost:3000/:cuisine
-router.get('/cuisine/:cuisine', (req, res)=> {
-    const cuisine = req.params.cuisine
-    const URL = 'https://api.sampleapis.com/recipes/recipes/'
+// router.get('/cuisine/:cuisine', (req, res)=> {
+//     const cuisine = req.params.cuisine
+//     const URL = 'https://api.sampleapis.com/recipes/recipes/'
 
-    fetch(URL)
-        .then(res => res.json())
-        .then(data => {
+//     fetch(URL)
+//         .then(res => res.json())
+//         .then(data => {
             
-            const cuisineArr = []
+//             const cuisineArr = []
 
-            data.forEach(item => {
-                if(item.cuisine == cuisine) {
-                    cuisineArr.push(item)
-                }
-            })
-            return cuisineArr
-        })
-        .then(cuisineArr => {
-            res.render('pages/recipes', {
-                title: cuisine,
-                name: `${cuisine} recipes`,
-                data: cuisineArr
-            })
-        })
-})
+//             data.forEach(item => {
+//                 if(item.cuisine == cuisine) {
+//                     cuisineArr.push(item)
+//                 }
+//             })
+//             return cuisineArr
+//         })
+//         .then(cuisineArr => {
+//             res.render('pages/recipes', {
+//                 title: cuisine,
+//                 name: `${cuisine} recipes`,
+//                 data: cuisineArr
+//             })
+//         })
+// })
 
 //Ethan's section below
 //all recipes
@@ -180,47 +181,47 @@ router.get('/all', (req, res) => {
 })
 
 //recipe by cuisine
-router.get('/cuisine/:cuisine', (req, res) => {
-    const cuisine = req.params.cuisine
-    const URL = `https://api.sampleapis.com/recipes/recipes/`
-    const calories = req.query.calories
-    const time = req.query.time
+// router.get('/cuisine/:cuisine', (req, res) => {
+//     const cuisine = req.params.cuisine
+//     const URL = `https://api.sampleapis.com/recipes/recipes/`
+//     const calories = req.query.calories
+//     const time = req.query.time
 
 
-    fetch(URL)
-        .then(res => res.json())
-        .then(data => {
-            const cuisineArr = []
-            data.forEach(item => {
-                if(item.cuisine == cuisine) {
-                    if(!calories && !time) {
-                        cuisineArr.push(item)
-                    } else if (!calories && time) {
-                        if(item.cuisine == cuisine && item.totalTime <= time) {
-                            cuisineArr.push(item);
-                        }
-                    } else if (calories && !time) {
-                        if(item.cusine == cuisine && item.calories <= calories) {
-                            cuisineArr.push(item);
-                        }
-                    } else {
-                        if(item.cuisine == cuisine && item.calories <= calories && item.totalTime <= time) {
-                            cuisineArr.push(item);
-                        }
-                    }
-                }
+//     fetch(URL)
+//         .then(res => res.json())
+//         .then(data => {
+//             const cuisineArr = []
+//             data.forEach(item => {
+//                 if(item.cuisine == cuisine) {
+//                     if(!calories && !time) {
+//                         cuisineArr.push(item)
+//                     } else if (!calories && time) {
+//                         if(item.cuisine == cuisine && item.totalTime <= time) {
+//                             cuisineArr.push(item);
+//                         }
+//                     } else if (calories && !time) {
+//                         if(item.cusine == cuisine && item.calories <= calories) {
+//                             cuisineArr.push(item);
+//                         }
+//                     } else {
+//                         if(item.cuisine == cuisine && item.calories <= calories && item.totalTime <= time) {
+//                             cuisineArr.push(item);
+//                         }
+//                     }
+//                 }
 
-            })
-            return cuisineArr
-        })
-        .then(cuisineArr => {
-            res.render('pages/all-recipes', {
-                title: cuisine,
-                name: `${cuisine} recipes`,
-                data: cuisineArr
-            })
-        })
-})
+//             })
+//             return cuisineArr
+//         })
+//         .then(cuisineArr => {
+//             res.render('pages/all-recipes', {
+//                 title: cuisine,
+//                 name: `${cuisine} recipes`,
+//                 data: cuisineArr
+//             })
+//         })
+// })
 
 
 
