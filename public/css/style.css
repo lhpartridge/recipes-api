@@ -34,7 +34,6 @@ header {
     font-weight: 700;
 }
 
-
 a, .nav-link {
     color: var(--textColor);
     text-decoration: none;
@@ -69,7 +68,6 @@ a:hover {
 }
 
 .recipeDiv {
-    /* width: 90%; */
     border-bottom: 2px solid darkgoldenrod;
 }
 
@@ -87,9 +85,7 @@ a:hover {
     width: 110%;
 }
 
-
 .home-image {
-    /* max-width: 33vw; */
     padding: 8px;
     border-radius: 3%;
 }
@@ -115,15 +111,6 @@ a:hover {
 
 .figcap-home {
     font-size: 20px;
-}
-
-.box-image {
-    /* max-width: 200px; */
-    /* max-height: 300px; */
-}
-
-.single-image {
-    
 }
 
 .preparation {

@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     fetch(URL)
         .then(res => res.json())
         .then(data => {
-            //changed all-recipes to recipes and back again
             res.render('pages/recipes', {
                 title: 'All Recipes',
                 name: 'Recipe Box',
@@ -275,14 +274,9 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
 //<!-- title, photoURL, cuisine, course, total time -->
  
-
-//change section to match current api
 //by cuisine
-
-
 
 // =============================================================
 // router.get('/type/:type', (req, res)=> {
